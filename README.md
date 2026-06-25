@@ -12,4 +12,5 @@
 - [Numeros primos](https://github.com/eldragon024/programas/blob/main/NumerosPrimos.java)
 - [Readme](https://github.com/eldragon024/programas/blob/main/README.md)
 - [Hola](https://github.com/eldragon024/programas/blob/main/hola.java)
-- [Curso](https://github.com/eldragon024/programas/blob/main/hola.java)
+- [Curso](https://github.com/eldragon024/programas/blob/main/curso)
+- [SistemaDelCurso](https://github.com/eldragon024/programas/blob/main/SistemasCursos)
