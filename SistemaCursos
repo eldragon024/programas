@@ -1,0 +1,262 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+import java.util.Stack;
+
+public class SistemaCursos {
+
+    static Scanner sc = new Scanner(System.in);
+
+    static ArrayList<Curso> cursos = new ArrayList<>();
+    static Stack<String> historial = new Stack<>();
+
+    public static void main(String[] args) {
+
+        int opcion;
+
+        do {
+
+            System.out.println("\n===== SISTEMA DE GESTIÓN DE CURSOS UTC =====");
+            System.out.println("1. Agregar curso");
+            System.out.println("2. Mostrar cursos");
+            System.out.println("3. Buscar curso por clave");
+            System.out.println("4. Inscribir estudiante");
+            System.out.println("5. Dar de baja estudiante");
+            System.out.println("6. Eliminar curso");
+            System.out.println("7. Mostrar historial de acciones");
+            System.out.println("8. Mostrar cursos ordenados por inscritos");
+            System.out.println("9. Salir");
+            System.out.print("Seleccione una opción: ");
+
+            opcion = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcion) {
+
+                case 1:
+                    agregarCurso();
+                    break;
+
+                case 2:
+                    mostrarCursos();
+                    break;
+
+                case 3:
+                    buscarCurso();
+                    break;
+
+                case 4:
+                    inscribirEstudiante();
+                    break;
+
+                case 5:
+                    darBajaEstudiante();
+                    break;
+
+                case 6:
+                    eliminarCurso();
+                    break;
+
+                case 7:
+                    mostrarHistorial();
+                    break;
+
+                case 8:
+                    ordenarPorInscritos();
+                    break;
+
+                case 9:
+                    System.out.println("Programa finalizado.");
+                    break;
+
+                default:
+                    System.out.println("Opción inválida.");
+            }
+
+        } while (opcion != 9);
+
+        sc.close();
+    }
+
+    public static void agregarCurso() {
+
+        System.out.print("Clave: ");
+        String clave = sc.nextLine();
+
+        if (buscarCursoPorClave(clave) != null) {
+            System.out.println("Ya existe un curso con esa clave.");
+            return;
+        }
+
+        System.out.print("Nombre: ");
+        String nombre = sc.nextLine();
+
+        System.out.print("Docente: ");
+        String docente = sc.nextLine();
+
+        System.out.print("Cupo máximo: ");
+        int cupo = sc.nextInt();
+        sc.nextLine();
+
+        Curso curso = new Curso(clave, nombre, docente, cupo);
+
+        cursos.add(curso);
+
+        historial.push("Se agregó el curso: " + nombre);
+
+        System.out.println("Curso agregado correctamente.");
+    }
+
+    public static void mostrarCursos() {
+
+        if (cursos.isEmpty()) {
+            System.out.println("No hay cursos registrados.");
+            return;
+        }
+
+        System.out.println("\n===== LISTA DE CURSOS =====");
+
+        for (Curso curso : cursos) {
+            System.out.println(curso);
+        }
+    }
+
+    public static void buscarCurso() {
+
+        System.out.print("Ingrese la clave del curso: ");
+        String clave = sc.nextLine();
+
+        Curso curso = buscarCursoPorClave(clave);
+
+        if (curso != null) {
+            System.out.println("\nCurso encontrado:");
+            System.out.println(curso);
+        } else {
+            System.out.println("Curso no encontrado.");
+        }
+    }
+
+    public static void inscribirEstudiante() {
+
+        System.out.print("Clave del curso: ");
+        String clave = sc.nextLine();
+
+        Curso curso = buscarCursoPorClave(clave);
+
+        if (curso == null) {
+            System.out.println("Curso no encontrado.");
+            return;
+        }
+
+        if (curso.getInscritos() < curso.getCupoMaximo()) {
+
+            curso.setInscritos(curso.getInscritos() + 1);
+
+            historial.push("Se inscribió un estudiante en: "
+                    + curso.getNombre());
+
+            System.out.println("Estudiante inscrito correctamente.");
+
+        } else {
+
+            System.out.println("El curso ya está lleno.");
+        }
+    }
+
+    public static void darBajaEstudiante() {
+
+        System.out.print("Clave del curso: ");
+        String clave = sc.nextLine();
+
+        Curso curso = buscarCursoPorClave(clave);
+
+        if (curso == null) {
+            System.out.println("Curso no encontrado.");
+            return;
+        }
+
+        if (curso.getInscritos() > 0) {
+
+            curso.setInscritos(curso.getInscritos() - 1);
+
+            historial.push("Se dio de baja un estudiante de: "
+                    + curso.getNombre());
+
+            System.out.println("Baja realizada correctamente.");
+
+        } else {
+
+            System.out.println("No hay estudiantes inscritos.");
+        }
+    }
+
+    public static void eliminarCurso() {
+
+        System.out.print("Clave del curso a eliminar: ");
+        String clave = sc.nextLine();
+
+        Curso curso = buscarCursoPorClave(clave);
+
+        if (curso == null) {
+            System.out.println("Curso no encontrado.");
+            return;
+        }
+
+        cursos.remove(curso);
+
+        historial.push("Se eliminó el curso: "
+                + curso.getNombre());
+
+        System.out.println("Curso eliminado correctamente.");
+    }
+
+    public static void mostrarHistorial() {
+
+        if (historial.isEmpty()) {
+            System.out.println("No existen acciones registradas.");
+            return;
+        }
+
+        System.out.println("\n===== HISTORIAL =====");
+
+        for (int i = historial.size() - 1; i >= 0; i--) {
+            System.out.println(historial.get(i));
+        }
+    }
+
+    public static Curso buscarCursoPorClave(String clave) {
+
+        for (Curso curso : cursos) {
+
+            if (curso.getClave().equalsIgnoreCase(clave)) {
+                return curso;
+            }
+        }
+
+        return null;
+    }
+
+    public static void ordenarPorInscritos() {
+
+        if (cursos.isEmpty()) {
+            System.out.println("No hay cursos registrados.");
+            return;
+        }
+
+        Collections.sort(cursos, new Comparator<Curso>() {
+            @Override
+            public int compare(Curso c1, Curso c2) {
+                return c2.getInscritos() - c1.getInscritos();
+            }
+        });
+
+        System.out.println("\n===== CURSOS ORDENADOS POR INSCRITOS =====");
+
+        for (Curso curso : cursos) {
+            System.out.println(curso);
+        }
+
+        historial.push("Se ordenaron los cursos por inscritos");
+    }
+}
