@@ -16,9 +16,11 @@
 - [SistemaDelCurso](https://github.com/eldragon024/programas/blob/main/SistemaCursos)
 
 ## Segundo parcial
+
 # Busqueda
--[Busqueda](https://github.com/eldragon024/programas/blob/main/Busqueda)
--[Lista enlazada Basica](https://github.com/eldragon024/programas/blob/main/ListaEnlazadaBasica.java)
--[Lista enlazada](https://github.com/eldragon024/programas/blob/main/ListaEnlazada.java)
--[Nodo](https://github.com/eldragon024/programas/blob/main/Nodo.java)
--[Principal Lista Enlazada](https://github.com/eldragon024/programas/blob/main/PrincipalListaEnlazada.java)
+
+- [Busqueda](https://github.com/eldragon024/programas/blob/main/Busqueda)
+- [Lista enlazada Basica](https://github.com/eldragon024/programas/blob/main/ListaEnlazadaBasica.java)
+- [Lista enlazada](https://github.com/eldragon024/programas/blob/main/ListaEnlazada.java)
+- [Nodo](https://github.com/eldragon024/programas/blob/main/Nodo.java)
+- [Principal Lista Enlazada](https://github.com/eldragon024/programas/blob/main/PrincipalListaEnlazada.java)
