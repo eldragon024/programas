@@ -14,3 +14,7 @@
 - [Hola](https://github.com/eldragon024/programas/blob/main/hola.java)
 - [Curso](https://github.com/eldragon024/programas/blob/main/curso)
 - [SistemaDelCurso](https://github.com/eldragon024/programas/blob/main/SistemaCursos)
+
+## Segundo parcial
+
+-[]()
