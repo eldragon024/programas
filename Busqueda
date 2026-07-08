@@ -1,0 +1,16 @@
+public class Busqueda {
+
+    public boolean buscar(ListaEnlazada lista, String datoBuscar) {
+
+        Nodo actual = lista.cabeza;
+
+        while (actual != null) {
+            if (actual.Dato.equals(datoBuscar)) {
+                return true;
+            }
+            actual = actual.siguienteNodo;
+        }
+
+        return false;
+    }
+}
