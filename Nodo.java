@@ -1,10 +1,11 @@
 public class Nodo {
-    String Dato;
-    Nodo siguienteNodo;
+    int dato;
+        Nodo izquierdo;
+        Nodo derecho;
 
-    public Nodo(String dato)
-    {
-        this.Dato = dato;
-        this.siguienteNodo = null;
-    }
+        public Nodo(int dato) {
+            this.dato = dato;
+            izquierdo = null;
+            derecho = null;
+        }
 }
