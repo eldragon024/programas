@@ -27,3 +27,8 @@
 - [Cuadro comparativo](https://github.com/eldragon024/programas/blob/main/Untitled%20document.docx)
 - [Lista doble enlazada](https://github.com/eldragon024/programas/blob/main/Principal)
 - [Fibonacci metodo recursivo](https://github.com/eldragon024/programas/blob/main/FibonacciRecursivo.java)
+- [Nodo](https://github.com/eldragon024/programas/blob/main/Nodo.java)
+- [MainArbol](https://github.com/eldragon024/programas/blob/main/MainArbol.java)
+- [Arbol](https://github.com/eldragon024/programas/blob/main/Arbol.java)
+- [GrafoMatriz](https://github.com/eldragon024/programas/blob/main/GrafoMatriz.java)
+- [Main](https://github.com/eldragon024/programas/blob/main/Main.java)
